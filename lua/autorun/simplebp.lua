@@ -1,8 +1,10 @@
 if not SERVER then return end
+print("SimpleBP by redpr1sm is running on this server!")
+
 function spawnProtect( ply )
     if IsValid( ply ) and not ply:HasGodMode() then
         ply:GodEnable()
-        ply:ChatPrint("You now have build protection.")
+        ply:ChatPrint("You now have build protection. (Spawned)")
     end
 end
 hook.add("PlayerSpawn","",spawnProtect)
@@ -32,3 +34,10 @@ function enterVehicle( ply, veh )
     end
 end
 hook.add("PlayerEnteredVehicle","",enterVehicle)
+
+function findPlayers()
+    T=nil
+    T=ents.FindByClass( "player" )
+end
+hook.add("PlayerConnect","",findPlayers)
+hook.add("PlayerDisconnected","",findPlayers)
