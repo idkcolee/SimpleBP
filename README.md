@@ -1,2 +1,2 @@
 # SimpleBP
-Automatic build protection script for Garry's Mod.
+Simple, automatic, easy-to-use build protection script for Garry's Mod.
