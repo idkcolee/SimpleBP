@@ -25,7 +25,7 @@ function badWeapon( ply, old, new )
         ply:ChatPrint("You've lost build protection! (Equipped weapon)")
     end
 end
-hook.add("PlayerSwitchWeapon","",badWeapon)
+hook.Add("PlayerSwitchWeapon","",badWeapon)
 
 function enterVehicle( ply, veh )
     if IsValid( ply ) and IsValid( veh ) then
