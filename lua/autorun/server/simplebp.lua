@@ -7,7 +7,7 @@ function spawnProtect( ply )
         ply:ChatPrint("You now have build protection. (Spawned)")
     end
 end
-hook.add("PlayerSpawn","",spawnProtect)
+hook.Add("PlayerSpawn","",spawnProtect)
 
 function tableContains( target, element )
     for K,V in pairs(target) do
@@ -33,11 +33,11 @@ function enterVehicle( ply, veh )
         ply:ChatPrint("You've lost build protection! (Entered vehicle)")
     end
 end
-hook.add("PlayerEnteredVehicle","",enterVehicle)
+hook.Add("PlayerEnteredVehicle","",enterVehicle)
 
 function findPlayers()
     T=nil
     T=ents.FindByClass( "player" )
 end
-hook.add("PlayerConnect","",findPlayers)
-hook.add("PlayerDisconnected","",findPlayers)
+hook.Add("PlayerConnect","",findPlayers)
+hook.Add("PlayerDisconnected","",findPlayers)
