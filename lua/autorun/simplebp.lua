@@ -5,3 +5,6 @@ function spawnProtect( ply )
     end
 end
 hook.add("PlayerSpawn","",spawnProtect)
+
+
+Safe = { "weapon_physgun", "gmod_tool", "gmod_camera" }
