@@ -18,7 +18,7 @@ end
 
 Safe = { "weapon_physgun", "gmod_tool", "gmod_camera" }
 function badWeapon( ply, old, new )
-    if IsValid( ply ) and not tableContains( Safe, new:GetClass() ) then
+    if IsValid( ply ) and IsValid( new ) and not tableContains( Safe, new:GetClass() ) then
         ply:GodDisable()
         ply:ChatPrint("You've lost build protection! (Equipped weapon)")
     end
