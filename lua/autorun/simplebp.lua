@@ -11,7 +11,7 @@ if SERVER then
 			ply:ChatPrint( "You now have build protection. (Spawned)" )
 		end
 	end
-	hook.Add( "PlayerSpawn","",spawnProtect )
+	hook.Add( "PlayerSpawn", "", spawnProtect )
 
 	function tableContains( target, element )
 		for K,V in pairs( target ) do
@@ -29,7 +29,7 @@ if SERVER then
 			ply:ChatPrint( "You've lost build protection! (Equipped weapon)" )
 		end
 	end
-	hook.Add( "PlayerSwitchWeapon","",badWeapon )
+	hook.Add( "PlayerSwitchWeapon", "", badWeapon )
 
 	function enterVehicle( ply, veh )
 		if IsValid( ply ) and IsValid( veh ) then
@@ -53,5 +53,12 @@ end
 
 
 if CLIENT then
+	net.Receive( "PlyTable", function()
+		T=net.ReadTable()
+	end)
 	
+	surface.SetFont( "HudHintTextLarge" )
+	hook.Add("hudPaint","",function()
+		
+	end)
 end
