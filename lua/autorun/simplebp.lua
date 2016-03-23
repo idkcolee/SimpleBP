@@ -57,12 +57,13 @@ if CLIENT then
 		T=net.ReadTable()
 	end)
 	
-	surface.SetFont( "HudHintTextLarge" )
 	local X, Y = scrW(), scrH()
 	surface.SetTextPos( X/2, Y/2 )
+	surface.SetTextColor( 0,0,0,255 )
+	surface.SetFont( "HudHintTextLarge" )
+	
 	hook.Add("hudPaint","",function()
 		if LocalPlayer():HasGodMode()
-
 			surface.DrawText( "You have build protection." )
 		end
 	end)
