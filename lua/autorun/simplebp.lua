@@ -56,8 +56,8 @@ if CLIENT then
 		T=net.ReadTable()
 	end)
 	
-	local SX, SY = ScrW(), ScrH()
-	local ShieldTexture = {
+	SX, SY = ScrW(), ScrH()
+	ShieldTexture = {
 		texture = surface.GetTextureID( "materials/shield/shield" ),
 		color   = Color( 255,255,255,255 ),
 		x       = SX/2,
