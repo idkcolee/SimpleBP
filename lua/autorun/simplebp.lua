@@ -56,17 +56,20 @@ if CLIENT then
 		T=net.ReadTable()
 	end)
 	
-	local X, Y = ScrW(), ScrH()
-	surface.SetTextPos( X/2, Y/2 )
-	surface.SetTextColor( 0,0,0,255 )
-	surface.SetFont( "HudHintTextLarge" )
-	sh=surface.GetTextureID( "materials/shield/shield" )
-	surface.SetTexture( sh )
+	local SX, SY = ScrW(), ScrH()
+	local ShieldTexture = {
+		texture = surface.GetTextureID( "materials/shield/shield" ),
+		color   = Color( 255,255,255,255 ),
+		x       = SX/2,
+		y       = SY/2,
+		w       = 64,
+		h       = 64
+	}
 	
 	hook.Add("HUDPaint","",function()
 		if LocalPlayer():HasGodMode() then
-			surface.DrawText( "You have build protection." )
-			surface.DrawTexturedRectangle( X/2, Y/2, 64, 64 )
+			draw.SimpleText( "You have build protection.", "HudHintTextLarge", SX/2, SY/2, { 0,0,0,255 }, TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER )
+			draw.TexturedQuad( ShieldTexture )
 		end
 	end)
 end
