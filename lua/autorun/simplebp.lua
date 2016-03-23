@@ -37,25 +37,10 @@ if SERVER then
 		end
 	end
 	hook.Add( "PlayerEnteredVehicle", "", enterVehicle )
-
-	function findPlayers()
-		T=nil
-		T=ents.FindByClass( "player" )
-
-		net.Start( "PlyTable" )
-			net.WriteTable( T )
-		net.Broadcast()
-	end
-	hook.Add( "PlayerConnect", "", findPlayers )
-	hook.Add( "PlayerDisconnected", "", findPlayers )
 end
 
 
 if CLIENT then
-	net.Receive( "PlyTable", function()
-		T=net.ReadTable()
-	end)
-	
 	SX, SY = ScrW(), ScrH()
 	ShieldTexture = {
 		texture = surface.GetTextureID( "materials/shield/shield" ),
