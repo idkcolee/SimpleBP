@@ -23,7 +23,7 @@ if SERVER then
 
 	Safe = { "weapon_physgun", "gmod_tool", "gmod_camera" }
 	function badWeapon( ply, old, new )
-		if IsValid( ply ) and IsValid( new ) and not tableContains( Safe, new:GetClass() ) then
+		if IsValid( ply ) and IsValid( new ) and not tableContains( Safe, new:GetClass() ) and ply:HasGodMode() then
 			ply:GodDisable()
 			ply:ChatPrint( "You've lost build protection! (Equipped weapon)" )
 		end
@@ -31,7 +31,7 @@ if SERVER then
 	hook.Add( "PlayerSwitchWeapon", "", badWeapon )
 
 	function enterVehicle( ply, veh )
-		if IsValid( ply ) and IsValid( veh ) then
+		if IsValid( ply ) and IsValid( veh ) and ply:HasGodMode() then
 			ply:GodDisable()
 			ply:ChatPrint( "You've lost build protection! (Entered vehicle)" )
 		end
