@@ -1,8 +1,7 @@
-print("#-----------------------------------------------#")
-print("|SimpleBP by redpr1sm is running on this server!|")
-print("#-----------------------------------------------#")
-
 if SERVER then
+	print("#-----------------------------------------------#")
+	print("|SimpleBP by redpr1sm is running on this server!|")
+	print("#-----------------------------------------------#")
 	util.AddNetworkString("PlyTable")
 
 	function spawnProtect( ply )
