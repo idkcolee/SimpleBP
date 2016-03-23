@@ -50,3 +50,8 @@ if SERVER then
 	hook.Add( "PlayerConnect", "", findPlayers )
 	hook.Add( "PlayerDisconnected", "", findPlayers )
 end
+
+
+if CLIENT then
+	
+end
