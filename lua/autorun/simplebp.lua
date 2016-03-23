@@ -59,7 +59,7 @@ if CLIENT then
 	
 	surface.SetFont( "HudHintTextLarge" )
 	local X, Y = scrW(), scrH()
-	surface.
+	surface.SetTextPos( X/2, Y/2 )
 	hook.Add("hudPaint","",function()
 		if LocalPlayer():HasGodMode()
 
