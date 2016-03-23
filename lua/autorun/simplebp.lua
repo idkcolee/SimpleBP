@@ -57,7 +57,7 @@ if CLIENT then
 		T=net.ReadTable()
 	end)
 	
-	local X, Y = scrW(), scrH()
+	local X, Y = ScrW(), ScrH()
 	surface.SetTextPos( X/2, Y/2 )
 	surface.SetTextColor( 0,0,0,255 )
 	surface.SetFont( "HudHintTextLarge" )
