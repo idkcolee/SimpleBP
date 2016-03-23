@@ -45,6 +45,7 @@ if SERVER then
 
 		net.Start( "PlyTable" )
 			net.WriteTable( T )
+		net.Broadcast()
 	end
 	hook.Add( "PlayerConnect", "", findPlayers )
 	hook.Add( "PlayerDisconnected", "", findPlayers )
