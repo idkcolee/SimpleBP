@@ -61,10 +61,13 @@ if CLIENT then
 	surface.SetTextPos( X/2, Y/2 )
 	surface.SetTextColor( 0,0,0,255 )
 	surface.SetFont( "HudHintTextLarge" )
+	sh=surface.GetTextureID( "materials/shield/shield" )
+	surface.SetTexture( sh )
 	
 	hook.Add("hudPaint","",function()
 		if LocalPlayer():HasGodMode()
 			surface.DrawText( "You have build protection." )
+			surface.DrawTexturedRectangle( X/2, Y/2, 64, 64 )
 		end
 	end)
 end
