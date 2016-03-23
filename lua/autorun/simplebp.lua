@@ -63,7 +63,7 @@ if CLIENT then
 	sh=surface.GetTextureID( "materials/shield/shield" )
 	surface.SetTexture( sh )
 	
-	hook.Add("hudPaint","",function()
+	hook.Add("HUDPaint","",function()
 		if LocalPlayer():HasGodMode() then
 			surface.DrawText( "You have build protection." )
 			surface.DrawTexturedRectangle( X/2, Y/2, 64, 64 )
