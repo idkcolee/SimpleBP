@@ -59,6 +59,8 @@ if CLIENT then
 	
 	surface.SetFont( "HudHintTextLarge" )
 	hook.Add("hudPaint","",function()
-		
+		if LocalPlayer():HasGodMode()
+			surface.DrawText( scrW()/2, scrH()/2, "You have build protection." )
+		end
 	end)
 end
