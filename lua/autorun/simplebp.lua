@@ -73,7 +73,7 @@ if CLIENT then
 			draw.Text( {
 			text   = "You have build protection.",
 			font   = "HudHintTextLarge",
-			pos    = {SX/2-86.5, 16},
+			pos    = {SX/2-94.5, 16},
 			xalign = TEXT_ALIGN_CENTER,
 			yalign = TEXT_ALIGN_CENTER,
 			color  = color_white
