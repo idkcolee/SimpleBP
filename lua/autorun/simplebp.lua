@@ -1,4 +1,5 @@
 if SERVER then
+	resource.AddFile( "addons/SimpleBP/materials/shield" )
 	print("#-----------------------------------------------#")
 	print("|SimpleBP by redpr1sm is running on this server!|")
 	print("#-----------------------------------------------#")
@@ -53,7 +54,7 @@ end
 if CLIENT then
 	SX, SY = ScrW(), ScrH()
 	ShieldTexture = {
-		texture = surface.GetTextureID( "materials\\shield\\shield.vtf" ),
+		texture = surface.GetTextureID( "addons/SimpleBP/materials/shield" ),
 		color   = color_white,
 		x       = SX/2,
 		y       = 8,
