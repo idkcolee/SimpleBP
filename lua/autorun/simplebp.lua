@@ -1,46 +1,65 @@
-print("#-----------------------------------------------#")
-print("|SimpleBP by redpr1sm is running on this server!|")
-print("#-----------------------------------------------#")
-
 if SERVER then
-	function spawnProtect( ply )
+	resource.AddFile( "shield/shield.png" )
+	print( "#-----------------------------------------------#" )
+	print( "|SimpleBP by redpr1sm is running on this server!|" )
+	print( "#-----------------------------------------------#" )
+
+	local function spawnProtect( ply )
 		if IsValid( ply ) and not ply:HasGodMode() then
 			ply:GodEnable()
-			ply:ChatPrint("You now have build protection. (Spawned)")
+			ply:SetNWBool( "SimpleBP", true )
+			ply:ChatPrint( "You now have build protection. (Spawned)" )
 		end
 	end
-	hook.Add("PlayerSpawn","",spawnProtect)
 
-	function tableContains( target, element )
-		for K,V in pairs(target) do
-			if V==element then
-				return true
-			end
-		end
-		return false
-	end
-
-	Safe = { "weapon_physgun", "gmod_tool", "gmod_camera" }
-	function badWeapon( ply, old, new )
-		if IsValid( ply ) and IsValid( new ) and not tableContains( Safe, new:GetClass() ) then
+	local Safe = { ["weapon_physgun"] = true, ["gmod_tool"] = true, ["gmod_camera"] = true }
+	local function badWeapon( ply, old, new )
+		if IsValid( ply ) and IsValid( new ) and not Safe[ new:GetClass() ] and ply:HasGodMode() then
 			ply:GodDisable()
-			ply:ChatPrint("You've lost build protection! (Equipped weapon)")
+			ply:SetNWBool( "SimpleBP", false )
+			ply:ChatPrint( "You've lost build protection! (Equipped weapon)" )
 		end
 	end
-	hook.Add("PlayerSwitchWeapon","",badWeapon)
 
-	function enterVehicle( ply, veh )
-		if IsValid( ply ) and IsValid( veh ) then
+	local function enterVehicle( ply, veh )
+		if IsValid( ply ) and IsValid( veh ) and ply:HasGodMode() then
 			ply:GodDisable()
-			ply:ChatPrint("You've lost build protection! (Entered vehicle)")
+			ply:SetNWBool( "SimpleBP", false )
+			ply:ChatPrint( "You've lost build protection! (Entered vehicle)" )
 		end
 	end
-	hook.Add( "PlayerEnteredVehicle", "", enterVehicle )
+	
+	hook.Add( "PlayerSpawn", "SimpleBP", spawnProtect )
+	hook.Add( "PlayerSwitchWeapon", "SimpleBP", badWeapon )
+	hook.Add( "PlayerEnteredVehicle", "SimpleBP", enterVehicle )
+end
 
-	function findPlayers()
-		T=nil
-		T=ents.FindByClass( "player" )
-	end
-	hook.Add( "PlayerConnect","",findPlayers )
-	hook.Add( "PlayerDisconnected", "", findPlayers )
+
+if CLIENT then
+	local ShieldTexture = {
+		texture = surface.GetTextureID("shield/shield"),
+		color   = color_white,
+		x       = 0,
+		y       = 8,
+		w       = 32,
+		h       = 32
+	}
+	
+	hook.Add("HUDPaint","",function()
+		local SX, SY = ScrW(), ScrH()
+		
+		if LocalPlayer():GetNWBool("SimpleBP", false) then
+			draw.Text( {
+				text   = "You have build protection.",
+				font   = "HudHintTextLarge",
+				pos    = {SX/2-94.5, 16},
+				xalign = TEXT_ALIGN_CENTER,
+				yalign = TEXT_ALIGN_CENTER,
+				color  = color_white
+			} )
+			
+			ShieldTexture.x = SX/2
+			draw.TexturedQuad( ShieldTexture )
+		end
+	end)
 end
