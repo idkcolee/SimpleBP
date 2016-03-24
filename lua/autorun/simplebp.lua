@@ -45,10 +45,10 @@ if CLIENT then
 	ShieldTexture = {
 		texture = surface.GetTextureID( "materials/shield/shield" ),
 		color   = Color( 255,255,255,255 ),
-		x       = SX/2-64,
+		x       = SX/2-32,
 		y       = SY,
-		w       = 64,
-		h       = 64
+		w       = 32,
+		h       = 32
 	}
 	
 	hook.Add("HUDPaint","",function()
