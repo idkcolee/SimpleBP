@@ -3,6 +3,7 @@ if SERVER then
 	print("|SimpleBP by redpr1sm is running on this server!|")
 	print("#-----------------------------------------------#")
 	util.AddNetworkString( "LocalHasGod" )
+	util.AddNetworkString( "LocalPly" )
 
 	function spawnProtect( ply )
 		if IsValid( ply ) and not ply:HasGodMode() then
@@ -50,7 +51,6 @@ end
 
 
 if CLIENT then
-	util.AddNetworkString( "LocalPly" )
 	SX, SY = ScrW(), ScrH()
 	ShieldTexture = {
 		texture = surface.GetTextureID( "materials/shield/shield" ),
