@@ -1,5 +1,5 @@
 "LightmappedGeneric"
 {
 	"$basetexture" "shield/shield"
-	"$translucent" 1
+	"$translucent" 0
 }
