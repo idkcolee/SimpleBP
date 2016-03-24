@@ -55,7 +55,7 @@ if CLIENT then
 	ShieldTexture = {
 		texture = surface.GetTextureID( "materials/shield/shield" ),
 		color   = color_white,
-		x       = SX/2+32,
+		x       = SX/2,
 		y       = 16,
 		w       = 32,
 		h       = 32
@@ -69,15 +69,19 @@ if CLIENT then
 			LocalHasGod=net.ReadBool()
 		end)
 		
+		local font = {
+			text   = "You have build protection.",
+			font   = "HudHintTextLarge",
+			pos    = {SX/2-80, 16},
+			xalign = TEXT_ALIGN_CENTER,
+			yalign = TEXT_ALIGN_CENTER,
+			color  = color_white
+		}
+		
 		if LocalHasGod then
-			draw.Text( {
-				text   = "You have build protection.",
-				font   = "HudHintTextLarge",
-				pos    = {SX/2-80, 16},
-				xalign = TEXT_ALIGN_CENTER,
-				yalign = TEXT_ALIGN_CENTER,
-				color  = color_white
-			} )
+			draw.Text( font )
+			Tw, Th = draw.Text( font )
+			print( Tw )
 			draw.TexturedQuad( ShieldTexture )
 		end
 	end)
