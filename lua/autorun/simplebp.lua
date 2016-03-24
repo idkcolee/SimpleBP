@@ -61,7 +61,7 @@ if CLIENT then
 				yalign = TEXT_ALIGN_CENTER,
 				color  = color_white
 			} )
-			--draw.TexturedQuad( ShieldTexture )
+			draw.TexturedQuad( ShieldTexture )
 		--end
 	end)
 end
