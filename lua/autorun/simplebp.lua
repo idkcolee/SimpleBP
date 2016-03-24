@@ -48,7 +48,7 @@ if CLIENT then
 	hook.Add("HUDPaint","",function()
 		local SX, SY = ScrW(), ScrH()
 		
-		if LocalPlayer:GetNWBool("SimpleBP", false) then
+		if LocalPlayer():GetNWBool("SimpleBP", false) then
 			draw.Text( {
 				text   = "You have build protection.",
 				font   = "HudHintTextLarge",
