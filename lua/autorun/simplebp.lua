@@ -1,5 +1,5 @@
 if SERVER then
-	resource.AddFile( "shield/shield.vmt" )
+	resource.AddFile( "shield/shield.png" )
 	print( "#-----------------------------------------------#" )
 	print( "|SimpleBP by redpr1sm is running on this server!|" )
 	print( "#-----------------------------------------------#" )
