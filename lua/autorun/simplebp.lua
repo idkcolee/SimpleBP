@@ -53,7 +53,7 @@ end
 if CLIENT then
 	SX, SY = ScrW(), ScrH()
 	ShieldTexture = {
-		texture = surface.GetTextureID( "materials/shield/shield" ),
+		texture = surface.GetTextureID( "materials\\shield\\shield.vtf" ),
 		color   = color_white,
 		x       = SX/2,
 		y       = 8,
