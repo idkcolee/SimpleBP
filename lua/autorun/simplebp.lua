@@ -52,9 +52,9 @@ if CLIENT then
 	}
 	
 	hook.Add("HUDPaint","",function()
-		if LocalPlayer():HasGodMode() then
+		--if LocalPlayer():HasGodMode() then
 			draw.SimpleText( "You have build protection.", "HudHintTextLarge", SX/2, SY/2, { 0,0,0,255 }, TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER )
 			draw.TexturedQuad( ShieldTexture )
-		end
+		--end
 	end)
 end
