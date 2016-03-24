@@ -46,7 +46,7 @@ if CLIENT then
 		texture = surface.GetTextureID( "materials/shield/shield" ),
 		color   = Color( 255,255,255,255 ),
 		x       = SX/2-32,
-		y       = SY,
+		y       = 64,
 		w       = 32,
 		h       = 32
 	}
@@ -56,7 +56,7 @@ if CLIENT then
 			draw.Text( {
 				text   = "You have build protection.",
 				font   = "HudHintTextLarge",
-				pos    = {SX/2, SY},
+				pos    = {SX/2-40, 64},
 				xalign = TEXT_ALIGN_CENTER,
 				yalign = TEXT_ALIGN_CENTER,
 				color  = color_white
