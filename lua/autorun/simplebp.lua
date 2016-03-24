@@ -1,5 +1,5 @@
 if SERVER then
-	resource.AddFile( "shield.vmt" )
+	resource.AddFile( "shield/shield.vmt" )
 	print( "#-----------------------------------------------#" )
 	print( "|SimpleBP by redpr1sm is running on this server!|" )
 	print( "#-----------------------------------------------#" )
@@ -37,7 +37,7 @@ end
 
 if CLIENT then
 	local ShieldTexture = {
-		texture = surface.GetTextureID("shield"),
+		texture = surface.GetTextureID("shield/shield"),
 		color   = color_white,
 		x       = 0,
 		y       = 8,
