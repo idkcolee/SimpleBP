@@ -50,6 +50,7 @@ end
 
 
 if CLIENT then
+	util.AddNetworkString( "LocalPly" )
 	SX, SY = ScrW(), ScrH()
 	ShieldTexture = {
 		texture = surface.GetTextureID( "materials/shield/shield" ),
