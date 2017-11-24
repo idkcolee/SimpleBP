@@ -1,4 +1,4 @@
 # SimpleBP
-
-Automated build protection script for Garry's Mod.
-Credit to [@thegrb93](https://github.com/thegrb93) for the mechanics + some optimizations and fixes. He owns a sandbox server named Dirtbox Warzone, go check it out!
+SimpleBP is, needless to say, an extremely minimalistic build protection system for Garry's Mod. Players lose build protection when entering a vehicle or pulling out a weapon, and regain it upon respawning.
+# Installation
+Pop the addon into your server and you're good to go. No configuration is required.
