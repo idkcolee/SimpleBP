@@ -125,7 +125,7 @@ if CLIENT then
 	
 	-- Draw shield + text
 	hook.Add("HUDPaint","",function()	
-		if not LocalPlayer():GetNWBool( "SimpleBP_UI" ) then return end	
+		if not LocalPlayer():GetNWBool( "SimpleBP_UI", true ) then return end	
 
 		local SX, SY = ScrW(), ScrH()
 
