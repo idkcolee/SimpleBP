@@ -56,12 +56,9 @@ if SERVER then
 
 	-- Ensures players attempting to enter noclip have BP
 	local function shouldAllowNoclip( ply, desiredState )
-		if desiredState == false then
-			return true
-		elseif hasBP( ply ) then
+		if ply:IsAdmin() or hasBP(ply) or desiredState == false then
 			return true
 		end
-
 		return false
 	end
 
@@ -69,7 +66,7 @@ if SERVER then
 	local function checkPlys()
 		local plys = player.GetAll()
 		for i,ply in pairs(plys) do
-			if not hasBP(ply) then
+			if not shouldAllowNoclip(ply) then
 				if ply:GetMoveType() == MOVETYPE_NOCLIP then
 					ply:SetMoveType( MOVETYPE_WALK )
 				end
@@ -90,18 +87,30 @@ if SERVER then
 	-- Enable UI at top of screen
 	concommand.Add( "simplebp_enable_ui", function( ply )
 		ply:SetNWBool( "SimpleBP_UI", true )
+		ply:PrintMessage( HUD_PRINTCONSOLE, "UI enabled." )
 	end )
 
 	-- Enable UI at top of screen
 	concommand.Add( "simplebp_disable_ui", function( ply )
 		ply:SetNWBool( "SimpleBP_UI", false )
+		ply:PrintMessage( HUD_PRINTCONSOLE, "UI disabled." )
 	end )
 
 	-- Allow unloading of script (hooks, specifically) from console. Mostly for debugging.
 	concommand.Add( "simplebp_unload", function( ply )
-		local hooks = {"PlayerSpawn", "PlayerSwitchWeapon", "PlayerEnteredVehicle", "PlayerNoClip"}
+		if not ply:IsAdmin() then
+			ply:PrintMessage( HUD_PRINTCONSOLE, "You cannot run this command without admin priveleges." )
+		end
+
+		local hooks = { "PlayerSpawn", "PlayerSwitchWeapon", "PlayerEnteredVehicle", "PlayerNoClip" }
 		for i,name in pairs( hooks ) do
 			hook.Remove( name, HookIdent )
+		end
+
+		for i,ply in pairs(player.GetAll()) do
+			ply:SendLua("hook.Remove( 'HUDPaint','SimpleBP' )")
+			ply:GodDisable()
+			ply:SetNWBool( "SimpleBP_BP", false )
 		end
 
 		print( "SimpleBP has been unloaded. This command will no longer be valid." )
@@ -113,6 +122,7 @@ end
 
 
 if CLIENT then
+
 	-- Texture for shield at the top of screen to indicate BP
 	local ShieldTexture = {
 		texture = surface.GetTextureID( "shield/shield" ),
@@ -124,7 +134,7 @@ if CLIENT then
 	}
 	
 	-- Draw shield + text
-	hook.Add("HUDPaint","",function()	
+	hook.Add("HUDPaint","SimpleBP",function()	
 		if not LocalPlayer():GetNWBool( "SimpleBP_UI", true ) then return end	
 
 		local SX, SY = ScrW(), ScrH()
